@@ -1,0 +1,31 @@
+.container{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.scores{
+    border: 1px solid red;
+    flex: 1;
+    order: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.game{
+    border: 1px solid blue;
+    flex: 10;
+    order: 2;
+}
+
+.input{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+    order: 3;
+}
+
