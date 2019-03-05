@@ -1,15 +1,9 @@
 const words = [ 'The','job', 'requires', 'extra', 'pluck', 'and', 'zeal', 'from', 'every', 'young', 'wage', 'earner',  'Quick', 'zephyrs', 'blow,', 'vexing', 'daft', 'Jim', 'Two', 'driven', 'jocks', 'help', 'fax', 'my', 'big', 'quiz', 'Five', 'quacking', 'zephyrs', 'jolt', 'my', 'wax', 'bed', 'The', 'five', 'boxing', 'wizards', 'jump', 'quickly', 'Pack', 'my', 'box', 'with', 'five', 'dozen', 'liquor', 'jugs', 'We', 'promptly', 'judged', 'antique', 'ivory', 'buckles', 'for', 'the', 'next', 'prize', 'Jaded', 'zombies', 'acted', 'quaintly', 'but', 'kept','driving','their','oxen','forward', 'end' ]
 
-const textBox = document.querySelector('.text')
+const textBox = document.querySelector('.textBox')
+ 
 
-textBox.addEventListener('keydown', function(evt){
-    console.log(evt.keyCode)
-    if (evt.keyCode === 13){
-        evt.preventDefault()
-        console.log('entered')
-    }
-    
-})
+
 
 const generateWord = function(wordsArray){
     let randomWord = Math.floor(Math.random() * wordsArray.length)
@@ -77,19 +71,25 @@ const startGame = function(){
 },1000)
 }
 
-// startGame()
+textBox.addEventListener('keydown', function(evt){
+    if (evt.keyCode === 13){
+        evt.preventDefault()
 
-//get current words on screen:
+        let currentWords = document.querySelectorAll('.word')
+        // console.log(currentWords)
+        for (let i = 0; i < currentWords.length; i ++){
+            if (textBox.value === currentWords[i].innerHTML){
+                console.log('matched!')
+            }
+        
+        }
+    }
+})
 
-// currentWords = document.querySelectorAll('.word')
 
-//add event listener to text box
+startGame()
 
-// const enteredWord = function(){
-//     // evt.preventDefault()
-//     console.log('submit')
-//     console.log(evt)
-// }
+
 
 
 
