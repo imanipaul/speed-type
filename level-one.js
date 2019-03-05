@@ -1,12 +1,20 @@
 const words = [ 'The','job', 'requires', 'extra', 'pluck', 'and', 'zeal', 'from', 'every', 'young', 'wage', 'earner',  'Quick', 'zephyrs', 'blow,', 'vexing', 'daft', 'Jim', 'Two', 'driven', 'jocks', 'help', 'fax', 'my', 'big', 'quiz', 'Five', 'quacking', 'zephyrs', 'jolt', 'my', 'wax', 'bed', 'The', 'five', 'boxing', 'wizards', 'jump', 'quickly', 'Pack', 'my', 'box', 'with', 'five', 'dozen', 'liquor', 'jugs', 'We', 'promptly', 'judged', 'antique', 'ivory', 'buckles', 'for', 'the', 'next', 'prize', 'Jaded', 'zombies', 'acted', 'quaintly', 'but', 'kept','driving','their','oxen','forward', 'end' ]
 
+const textBox = document.querySelector('.text')
 
-// console.log(words)
+textBox.addEventListener('keydown', function(evt){
+    console.log(evt.keyCode)
+    if (evt.keyCode === 13){
+        evt.preventDefault()
+        console.log('entered')
+    }
+    
+})
 
 const generateWord = function(wordsArray){
     let randomWord = Math.floor(Math.random() * wordsArray.length)
     // console.log(randomWord)
-    console.log(wordsArray[randomWord])
+    // console.log(wordsArray[randomWord])
     return wordsArray[randomWord]
 }
 // generateWord(words)
@@ -27,8 +35,8 @@ const moveWord = function(word){
 
     
     if (leftPositionInt < game.clientWidth){
-        console.log(leftPosition)
-        console.log(game.clientWidth)
+        // console.log(leftPosition)
+        // console.log(game.clientWidth)
         leftPositionInt = parseInt(leftPosition)
         newLeftPosition = ((leftPositionInt + 70).toString()) + 'px'
         word.style.left = newLeftPosition
@@ -63,8 +71,30 @@ const createWord = function(words){
 
 // createWord(words)
 
-let multipleWords = setInterval(function(){
+const startGame = function(){
+    let multipleWords = setInterval(function(){
     createWord(words)
 },1000)
+}
+
+// startGame()
+
+//get current words on screen:
+
+// currentWords = document.querySelectorAll('.word')
+
+//add event listener to text box
+
+// const enteredWord = function(){
+//     // evt.preventDefault()
+//     console.log('submit')
+//     console.log(evt)
+// }
+
+
+
+
+
+
 
 
