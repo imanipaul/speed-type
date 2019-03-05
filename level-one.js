@@ -71,18 +71,27 @@ const startGame = function(){
 },1000)
 }
 
+const updateScore = function(){
+    let scoreValue = document.querySelector('.score-value').innerHTML
+    scoreValueInt = parseInt(scoreValue)
+    scoreValueInt += 10;
+    document.querySelector('.score-value').innerHTML = scoreValueInt.toString()
+}
+
 textBox.addEventListener('keydown', function(evt){
     if (evt.keyCode === 13){
         evt.preventDefault()
 
         let currentWords = document.querySelectorAll('.word')
-        // console.log(currentWords)
         for (let i = 0; i < currentWords.length; i ++){
             if (textBox.value === currentWords[i].innerHTML){
-                console.log('matched!')
+                console.log('matched')
+                updateScore()
+               
             }
-        
+
         }
+
     }
 })
 
