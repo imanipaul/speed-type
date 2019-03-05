@@ -12,25 +12,38 @@ const generateWord = function(wordsArray){
 // generateWord(words)
 
 const randomPosition = function(){
-    position = (Math.random() * window.innerHeight).toString()
-    // console.log(typeof(position))
-    return position
+    game = document.querySelector('.game')
+    header = document.querySelector('.scores')
+    position = (Math.random()*game.clientHeight) + header.clientHeight
+    return position.toString()
 }
 
+
+
 const moveWord = function(word){
-    leftPosition = word.style.left
-    console.log(leftPosition)
-    leftPositionInt = parseInt(leftPosition)
-    newLeftPosition = ((leftPositionInt + 30).toString()) + 'px'
-    word.style.left = newLeftPosition
-    console.log(leftPosition)
+    let game = document.querySelector('.game')
+    let leftPosition = word.style.left
+    let leftPositionInt = parseInt(leftPosition)
+
+    
+    if (leftPositionInt < game.clientWidth){
+        console.log(leftPosition)
+        console.log(game.clientWidth)
+        leftPositionInt = parseInt(leftPosition)
+        newLeftPosition = ((leftPositionInt + 70).toString()) + 'px'
+        word.style.left = newLeftPosition
+    }
+    else{
+        word.remove()
+    }
+      
 
 }
 
 
 const createWord = function(words){
-    newWord = generateWord(words);
-    // console.log(newWord)
+    newWord = generateWord(words); 
+    
     let wordDiv = document.createElement('div')
     wordDiv.setAttribute('class', 'word')
     wordDiv.textContent = newWord
@@ -39,11 +52,18 @@ const createWord = function(words){
     wordDiv.style.setProperty('top', randomPosition() + 'px')
     
 
-    // let movingWord = setInterval(function(){
-    //     moveWord(wordDiv)
+    let movingWord = setInterval(function(){
+        moveWord(wordDiv)
+    }, 1000)
+
+    
+    // let removeWord = setTimeout(function(){
+    //     let game = document.querySelector('.game')
+    //     if (wordDiv.style.left > game.clientWidth){
+    //         wordDiv.remove()
+    //     }
     // }, 1000)
 
-    // movingWord
 
     document.querySelector('.game').appendChild(wordDiv)
 }
