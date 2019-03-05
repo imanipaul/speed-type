@@ -14,7 +14,7 @@ const generateWord = function(wordsArray){
 const randomPosition = function(){
     game = document.querySelector('.game')
     header = document.querySelector('.scores')
-    position = (Math.random()*game.clientHeight) + header.clientHeight
+    position = (Math.random() * game.clientHeight) + header.clientHeight
     return position.toString()
 }
 
@@ -56,18 +56,15 @@ const createWord = function(words){
         moveWord(wordDiv)
     }, 1000)
 
-    
-    // let removeWord = setTimeout(function(){
-    //     let game = document.querySelector('.game')
-    //     if (wordDiv.style.left > game.clientWidth){
-    //         wordDiv.remove()
-    //     }
-    // }, 1000)
 
 
     document.querySelector('.game').appendChild(wordDiv)
 }
 
-createWord(words)
+// createWord(words)
+
+let multipleWords = setInterval(function(){
+    createWord(words)
+},1000)
 
 
