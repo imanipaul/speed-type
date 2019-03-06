@@ -1,9 +1,11 @@
-// const words = [ 'The','job', 'requires', 'extra', 'pluck', 'and', 'zeal', 'from', 'every', 'young', 'wage', 'earner',  'Quick', 'zephyrs', 'blow,', 'vexing', 'daft', 'Jim', 'Two', 'driven', 'jocks', 'help', 'fax', 'my', 'big', 'quiz', 'Five', 'quacking', 'zephyrs', 'jolt', 'my', 'wax', 'bed', 'The', 'five', 'boxing', 'wizards', 'jump', 'quickly', 'Pack', 'my', 'box', 'with', 'five', 'dozen', 'liquor', 'jugs', 'We', 'promptly', 'judged', 'antique', 'ivory', 'buckles', 'for', 'the', 'next', 'prize', 'Jaded', 'zombies', 'acted', 'quaintly', 'but', 'kept','driving','their','oxen','forward', 'end' ]
-
-
 const words = ['splurge', 'sea', 'conscious', 'favor', 'medieval', 'clerk', 'pastel', 'variety', 'barrier', 'set', 'sentiment', 'computer', 'virus', 'particular', 'disposition', 'park', 'compliance', 'guerrilla', 'perfume', 'suite', 'cast', 'alarm', 'acquisition', 'appreciate', 'battlefield', 'raise', 'aisle', 'favour', 'patience', 'question', 'rational', 'regret', 'mathematics', 'chest', 'trap', 'control', 'violation', 'undertake', 'custody', 'language', 'list', 'swallow', 'trial', 'pour', 'trivial', 'wander', 'tax', 'promote', 'stitch', 'legend']
 
 const textBox = document.querySelector('.textBox')
+const winMessage = document.querySelector('.win')
+const playButton = document.querySelector('.startButton')
+const stopButton = document.querySelector('.stopButton')
+
+
  
 
 const generateWord = function(wordsArray){
@@ -55,12 +57,6 @@ const createWord = function(words){
 }
 
 
-const startGame = function(){
-    let multipleWords = setInterval(function(){
-    createWord(words)
-},1000)
-}
-
 const updateScore = function(){
     let scoreValue = document.querySelector('.score-value').innerHTML
     scoreValueInt = parseInt(scoreValue)
@@ -71,6 +67,16 @@ const updateScore = function(){
 const resetBox = function(){
     textBox.value = "";
 }
+
+const winLevel = function(){
+    currentScore = document.querySelector('.score-value').innerHTML
+    currentScoreInt = parseInt(currentScore)
+    if (currentScoreInt > 20){
+        winMessage.style.display = 'block'
+    }
+}
+
+
 
 textBox.addEventListener('keydown', function(evt){
     if (evt.keyCode === 13){
@@ -88,8 +94,16 @@ textBox.addEventListener('keydown', function(evt){
     }
 })
 
+const startGame = function(){
+    let multipleWords = setInterval(function(){
+    createWord(words)
+    winLevel()
+},1000)
+}
 
-startGame()
+playButton.addEventListener('click', startGame)
+
+// startGame()
 
 
 

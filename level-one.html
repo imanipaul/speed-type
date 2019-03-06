@@ -14,15 +14,23 @@
     <div class='container'>
         <div class='scores'>
             <div>
-                <h2 class='wpm value'>0</h2>
+                <form>
+                    <input type='button' class='startButton' value='Play!'>
+                </form>
             </div>
             <div>
                 <h2 class='score-title'>Score: </h2>
                 <h2 class='score-value'>0</h2>
             </div>
+            <form>
+                    <input type='button' class='stopButton' value='Stop!'>
+                </form>
             <!-- <h2 class='misses value'>0</h2> -->
         </div>
         <div class='game'>
+            <div class='win'>
+                <h2>You Won!</h2>
+            </div>
             <!-- <div class='game-board'></div> -->
         </div>
         <div class='input'>
@@ -31,13 +39,14 @@
             </div>
             <div class='player-input'>
                 <form>
-                    <input type='text' class = 'textBox' placeholder='Type!'>
+                    <input type='text' class='textBox' placeholder='Type!'>
                 </form>
             </div>
             <div class='level'>
                 <p>Level will display here</p>
             </div>
         </div>
+
 
     </div>
     <script src="level-one.js"></script>
