@@ -101,9 +101,10 @@ const startGame = function(){
 },1000)
 }
 
+textBox.select()
 playButton.addEventListener('click', startGame)
 
-// startGame()
+
 
 
 

@@ -45,6 +45,10 @@ input[type=text] {
     border-bottom: 1px solid black;
 }
 
+input[type=text]:focus {
+    outline: none;
+}
+
 .word{
     position: absolute;
 }
