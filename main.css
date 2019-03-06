@@ -1,12 +1,16 @@
-.container{
-    background-color: white;
-    display: flex;
+body{
+    background-color: #545454;
+
+}
+
+.game-container{
+    /* display: flex; */
     flex-direction: column;
     min-height: 100vh;
+    display: none;
 }
 
 .scores{
-    border: 1px solid red;
     flex: 1;
     order: 1;
     display: flex;
@@ -15,13 +19,13 @@
 }
 .score-title{
     display: inline;
+    color: white;
 }
 .score-value{
     display: inline;
 }
 
 .game{
-    border: 1px solid blue;
     flex: 10;
     order: 2;
     display: flex;
@@ -30,7 +34,6 @@
 }
 
 .input{
-    border: 1px solid black;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -38,11 +41,33 @@
     order: 3;
 }
 
+.home-button{
+    flex: 1;
+    max-width: 84px;
+}
+
+.player-input{
+    flex: 2;
+    max-width: 500px;
+    
+}
+
+
+.level{
+    flex: 1;
+    max-width: 148px;
+} 
+
 input[type=text] {
     border: none;
     /* outline: 0; */
     background: transparent;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
+    text-align: center;
+    color: white;
+    font-size: 50px; 
+    caret-color: white;
+
 }
 
 input[type=text]:focus {
@@ -51,6 +76,11 @@ input[type=text]:focus {
 
 .word{
     position: absolute;
+    color: black;
+    animation-name: changeColor;
+    animation-duration: 70s;
+    font-size: 20px;
+    /* padding-top: 5px; */
 }
 
 .win{
@@ -61,5 +91,49 @@ input[type=text]:focus {
     display: none;
   
 }
+
+.landing-screen{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #545454;
+}
+
+.landing-screen h1{
+    color: #1FB0E7;
+}
+
+.landing-screen .begin-button{
+    color: black;
+    background-color: yellow;
+}
+
+@keyframes changeColor{
+    0% {
+        color: #15de00;
+    }
+    25%{
+        color: #8dba00;
+    }
+    50%{
+        color: #bc9100;
+    }
+    75%{
+        color: #d75e00;
+    }
+    100%{
+        color: #df0000;
+    }
+}
+
+.textBox {
+    width: 100%;
+}
+
+
+
+
 
 

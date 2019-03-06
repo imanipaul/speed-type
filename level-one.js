@@ -3,88 +3,102 @@ const words = ['splurge', 'sea', 'conscious', 'favor', 'medieval', 'clerk', 'pas
 const textBox = document.querySelector('.textBox')
 const winMessage = document.querySelector('.win')
 const playButton = document.querySelector('.startButton')
-const stopButton = document.querySelector('.stopButton')
+const restartButton = document.querySelector('.restartButton')
+const gameContainer = document.querySelector('.game-container')
+const landingPage = document.querySelector('.landing-screen')
+const beginButton = document.querySelector('.begin-button')
 
 
- 
+beginButton.addEventListener('click', function () {
+    landingPage.style.display = 'none'
+    gameContainer.style.display = 'flex'
+})
 
-const generateWord = function(wordsArray){
+
+
+const generateWord = function (wordsArray) {
     let randomWord = Math.floor(Math.random() * wordsArray.length)
     return wordsArray[randomWord]
 }
 
-const randomPosition = function(){
+const randomPosition = function () {
     game = document.querySelector('.game')
     header = document.querySelector('.scores')
-    position = (Math.random() * game.clientHeight) + header.clientHeight
+    position = Math.floor((Math.random() * game.clientHeight)) + header.clientHeight
     return position.toString()
 }
 
 
 
-const moveWord = function(word){
+const moveWord = function (word) {
     let game = document.querySelector('.game')
     let leftPosition = word.style.left
     let leftPositionInt = parseInt(leftPosition)
 
-    
-    if (leftPositionInt < game.clientWidth){
+
+    if (leftPositionInt < game.clientWidth) {
         leftPositionInt = parseInt(leftPosition)
-        newLeftPosition = ((leftPositionInt + 70).toString()) + 'px'
+        newLeftPosition = ((leftPositionInt + 1).toString()) + 'px'
         word.style.left = newLeftPosition
     }
-    else{
+    else {
         word.remove()
     }
 }
 
 
-const createWord = function(words){
-    newWord = generateWord(words); 
-    
+
+const createWord = function (words, speed) {
+    newWord = generateWord(words);
+
     let wordDiv = document.createElement('div')
     wordDiv.setAttribute('class', 'word')
     wordDiv.textContent = newWord
 
     wordDiv.style.setProperty('left', '10px')
     wordDiv.style.setProperty('top', randomPosition() + 'px')
-    
 
-    let movingWord = setInterval(function(){
+
+    let movingWord = setInterval(function () {
         moveWord(wordDiv)
-    }, 1000)
+    }, speed)
     document.querySelector('.game').appendChild(wordDiv)
 }
 
 
-const updateScore = function(){
+const updateScore = function () {
     let scoreValue = document.querySelector('.score-value').innerHTML
     scoreValueInt = parseInt(scoreValue)
     scoreValueInt += 10;
     document.querySelector('.score-value').innerHTML = scoreValueInt.toString()
 }
 
-const resetBox = function(){
+const resetBox = function () {
     textBox.value = "";
 }
 
-const winLevel = function(){
+const winLevel = function () {
     currentScore = document.querySelector('.score-value').innerHTML
     currentScoreInt = parseInt(currentScore)
-    if (currentScoreInt > 20){
+    if (currentScoreInt > 30) {
         winMessage.style.display = 'block'
+        let currentWords = document.querySelectorAll('.word')
+        for (let i = 0; i < currentWords.length; i++) {
+            currentWords[i].remove()
+        }
     }
+    // clearInterval(multipleWords)
 }
 
 
 
-textBox.addEventListener('keydown', function(evt){
-    if (evt.keyCode === 13){
+textBox.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === 13) {
         evt.preventDefault()
 
         let currentWords = document.querySelectorAll('.word')
-        for (let i = 0; i < currentWords.length; i ++){
-            if (textBox.value === currentWords[i].innerHTML){
+        for (let i = 0; i < currentWords.length; i++) {
+            if (textBox.value === currentWords[i].innerHTML) {
                 console.log('matched')
                 currentWords[i].remove()
                 resetBox()
@@ -94,24 +108,45 @@ textBox.addEventListener('keydown', function(evt){
     }
 })
 
-const startGame = function(){
-    let multipleWords = setInterval(function(){
-    createWord(words)
-    winLevel()
-},1000)
+
+const startGame = function(speed) {
+    let multipleWords = setInterval(function () {
+        createWord(words, speed)
+        winLevel()
+    }, 2000)
+
+
 }
 
-textBox.select()
-playButton.addEventListener('click', startGame)
+const restartGame = function () {
+    let currentWords = document.querySelectorAll('.word')
+    for (let i = 0; i < currentWords.length; i++) {
+        currentWords[i].remove()
+    }
+    document.querySelector('.score-value').innerHTML = "0"
+    clearInterval(multipleWords)
+    
+    startGame()
+}
 
 
+// const levelTwo = function(){
+//     let multipleWords = setInterval(function () {
+//         createWord(words, 200)
+//         winLevel()
+//     }, 1000)
+
+// }
 
 
+// restartButton.addEventListener('click', restartGame)
 
 
+playButton.addEventListener('click', function () {
+    textBox.select()
+    startGame(20)
 
-
-
+})
 
 
 
