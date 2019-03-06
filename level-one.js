@@ -68,8 +68,6 @@ const randomPosition = function () {
     return position.toString()
 }
 
-
-
 const moveWord = function (word) {
     let game = document.querySelector('.game')
     let leftPosition = word.style.left
@@ -85,8 +83,6 @@ const moveWord = function (word) {
         word.remove()
     }
 }
-
-
 
 const createWord = function (words, speed) {
     newWord = generateWord(words);
@@ -127,9 +123,7 @@ const winLevel = function () {
             currentWords[i].remove()
         }
     }
-    // clearInterval(multipleWords)
 }
-
 
 
 textBox.addEventListener('keydown', function (evt) {
