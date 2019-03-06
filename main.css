@@ -23,6 +23,7 @@ body{
 }
 .score-value{
     display: inline;
+    color: white;
 }
 
 .game{
@@ -131,6 +132,13 @@ input[type=text]:focus {
     display: none;
 }
 .play-level-three{
+    display: none;
+}
+.level-one-tag{
+    display: none;
+}
+
+.level-two-tag{
     display: none;
 }
 

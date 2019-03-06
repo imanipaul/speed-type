@@ -12,6 +12,9 @@ const levelPage = document.querySelector('.level-screen')
 const levelOneButton = document.querySelector('.level1')
 const levelTwoButton = document.querySelector('.level2')
 const playTwo = document.querySelector('.play-level-two')
+const levelOneTag = document.querySelector('.level-one-tag')
+const levelTwoTag = document.querySelector('.level-two-tag')
+
 
 homeButton.addEventListener('click', function(){
     landingPage.style.display = 'flex'
@@ -30,6 +33,8 @@ levelOneButton.addEventListener('click', function(){
     levelPage.style.display = 'none'
     gameContainer.style.display = 'flex'
     playOne.style.display = 'inline-block'
+    levelOneTag.style.display = 'block'
+    levelTwoTag.style.display = 'none'
 })
 
 levelTwoButton.addEventListener('click', function(){
@@ -38,6 +43,9 @@ levelTwoButton.addEventListener('click', function(){
     gameContainer.style.display = 'flex'
     playTwo.style.display = 'inline-block'
     playOne.style.display = 'none'
+    levelOneTag.style.display = 'none'
+    levelTwoTag.style.display = 'block'
+
 })
 
 changeLevelButton.addEventListener('click', function(){
