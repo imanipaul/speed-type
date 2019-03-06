@@ -2,16 +2,48 @@ const words = ['splurge', 'sea', 'conscious', 'favor', 'medieval', 'clerk', 'pas
 
 const textBox = document.querySelector('.textBox')
 const winMessage = document.querySelector('.win')
-const playButton = document.querySelector('.startButton')
-const restartButton = document.querySelector('.restartButton')
+const playOne = document.querySelector('.play-level-one')
+const changeLevelButton = document.querySelector('.change-level')
 const gameContainer = document.querySelector('.game-container')
 const landingPage = document.querySelector('.landing-screen')
 const beginButton = document.querySelector('.begin-button')
+const homeButton = document.querySelector('img')
+const levelPage = document.querySelector('.level-screen')
+const levelOneButton = document.querySelector('.level1')
+const levelTwoButton = document.querySelector('.level2')
+const playTwo = document.querySelector('.play-level-two')
 
+homeButton.addEventListener('click', function(){
+    landingPage.style.display = 'flex'
+    gameContainer.style.display = 'none'
+})
 
 beginButton.addEventListener('click', function () {
     landingPage.style.display = 'none'
+    gameContainer.style.display = 'none'
+    levelPage.style.display = 'flex'
+
+})
+
+levelOneButton.addEventListener('click', function(){
+    landingPage.style.display = 'none'
+    levelPage.style.display = 'none'
     gameContainer.style.display = 'flex'
+    playOne.style.display = 'inline-block'
+})
+
+levelTwoButton.addEventListener('click', function(){
+    landingPage.style.display = 'none'
+    levelPage.style.display = 'none'
+    gameContainer.style.display = 'flex'
+    playTwo.style.display = 'inline-block'
+    playOne.style.display = 'none'
+})
+
+changeLevelButton.addEventListener('click', function(){
+    landingPage.style.display = 'none'
+    gameContainer.style.display = 'none'
+    levelPage.style.display = 'flex'
 })
 
 
@@ -109,43 +141,31 @@ textBox.addEventListener('keydown', function (evt) {
 })
 
 
-const startGame = function(speed) {
+const startGame = function(speed, interval) {
     let multipleWords = setInterval(function () {
         createWord(words, speed)
         winLevel()
-    }, 2000)
-
-
+    }, interval)
 }
 
-const restartGame = function () {
-    let currentWords = document.querySelectorAll('.word')
-    for (let i = 0; i < currentWords.length; i++) {
-        currentWords[i].remove()
-    }
-    document.querySelector('.score-value').innerHTML = "0"
-    clearInterval(multipleWords)
-    
-    startGame()
+const levelOne = function(){
+    startGame(20, 2000)
+}
+
+const levelTwo = function(){
+    startGame(10, 1000)
 }
 
 
-// const levelTwo = function(){
-//     let multipleWords = setInterval(function () {
-//         createWord(words, 200)
-//         winLevel()
-//     }, 1000)
-
-// }
-
-
-// restartButton.addEventListener('click', restartGame)
-
-
-playButton.addEventListener('click', function () {
+playOne.addEventListener('click', function() {
     textBox.select()
-    startGame(20)
+    levelOne()
 
+})
+
+playTwo.addEventListener('click', function(){
+    textBox.select()
+    levelTwo()
 })
 
 
