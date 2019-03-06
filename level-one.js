@@ -68,6 +68,10 @@ const updateScore = function(){
     document.querySelector('.score-value').innerHTML = scoreValueInt.toString()
 }
 
+const resetBox = function(){
+    textBox.value = "";
+}
+
 textBox.addEventListener('keydown', function(evt){
     if (evt.keyCode === 13){
         evt.preventDefault()
@@ -77,6 +81,7 @@ textBox.addEventListener('keydown', function(evt){
             if (textBox.value === currentWords[i].innerHTML){
                 console.log('matched')
                 currentWords[i].remove()
+                resetBox()
                 updateScore()
             }
         }
