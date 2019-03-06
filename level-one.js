@@ -1,17 +1,15 @@
-const words = [ 'The','job', 'requires', 'extra', 'pluck', 'and', 'zeal', 'from', 'every', 'young', 'wage', 'earner',  'Quick', 'zephyrs', 'blow,', 'vexing', 'daft', 'Jim', 'Two', 'driven', 'jocks', 'help', 'fax', 'my', 'big', 'quiz', 'Five', 'quacking', 'zephyrs', 'jolt', 'my', 'wax', 'bed', 'The', 'five', 'boxing', 'wizards', 'jump', 'quickly', 'Pack', 'my', 'box', 'with', 'five', 'dozen', 'liquor', 'jugs', 'We', 'promptly', 'judged', 'antique', 'ivory', 'buckles', 'for', 'the', 'next', 'prize', 'Jaded', 'zombies', 'acted', 'quaintly', 'but', 'kept','driving','their','oxen','forward', 'end' ]
+// const words = [ 'The','job', 'requires', 'extra', 'pluck', 'and', 'zeal', 'from', 'every', 'young', 'wage', 'earner',  'Quick', 'zephyrs', 'blow,', 'vexing', 'daft', 'Jim', 'Two', 'driven', 'jocks', 'help', 'fax', 'my', 'big', 'quiz', 'Five', 'quacking', 'zephyrs', 'jolt', 'my', 'wax', 'bed', 'The', 'five', 'boxing', 'wizards', 'jump', 'quickly', 'Pack', 'my', 'box', 'with', 'five', 'dozen', 'liquor', 'jugs', 'We', 'promptly', 'judged', 'antique', 'ivory', 'buckles', 'for', 'the', 'next', 'prize', 'Jaded', 'zombies', 'acted', 'quaintly', 'but', 'kept','driving','their','oxen','forward', 'end' ]
+
+
+const words = ['splurge', 'sea', 'conscious', 'favor', 'medieval', 'clerk', 'pastel', 'variety', 'barrier', 'set', 'sentiment', 'computer', 'virus', 'particular', 'disposition', 'park', 'compliance', 'guerrilla', 'perfume', 'suite', 'cast', 'alarm', 'acquisition', 'appreciate', 'battlefield', 'raise', 'aisle', 'favour', 'patience', 'question', 'rational', 'regret', 'mathematics', 'chest', 'trap', 'control', 'violation', 'undertake', 'custody', 'language', 'list', 'swallow', 'trial', 'pour', 'trivial', 'wander', 'tax', 'promote', 'stitch', 'legend']
 
 const textBox = document.querySelector('.textBox')
  
 
-
-
 const generateWord = function(wordsArray){
     let randomWord = Math.floor(Math.random() * wordsArray.length)
-    // console.log(randomWord)
-    // console.log(wordsArray[randomWord])
     return wordsArray[randomWord]
 }
-// generateWord(words)
 
 const randomPosition = function(){
     game = document.querySelector('.game')
@@ -29,8 +27,6 @@ const moveWord = function(word){
 
     
     if (leftPositionInt < game.clientWidth){
-        // console.log(leftPosition)
-        // console.log(game.clientWidth)
         leftPositionInt = parseInt(leftPosition)
         newLeftPosition = ((leftPositionInt + 70).toString()) + 'px'
         word.style.left = newLeftPosition
@@ -38,8 +34,6 @@ const moveWord = function(word){
     else{
         word.remove()
     }
-      
-
 }
 
 
@@ -57,13 +51,9 @@ const createWord = function(words){
     let movingWord = setInterval(function(){
         moveWord(wordDiv)
     }, 1000)
-
-
-
     document.querySelector('.game').appendChild(wordDiv)
 }
 
-// createWord(words)
 
 const startGame = function(){
     let multipleWords = setInterval(function(){
@@ -86,12 +76,10 @@ textBox.addEventListener('keydown', function(evt){
         for (let i = 0; i < currentWords.length; i ++){
             if (textBox.value === currentWords[i].innerHTML){
                 console.log('matched')
+                currentWords[i].remove()
                 updateScore()
-               
             }
-
         }
-
     }
 })
 
