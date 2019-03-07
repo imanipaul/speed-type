@@ -1,0 +1,377 @@
+body{
+    background-image: url('images/blackboard\ texture\ 0102.jpg');
+    /* background-color: black; */
+
+}
+
+h1{
+    font-family: 'Special Elite', cursive;
+    color: #1FB0E7;
+    font-size: 100px;
+    overflow: hidden;
+    border-right: 10px solid white;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 10px;
+    animation: 
+    typewriter 3s steps(40, end),
+    blinking-cursor .5s step-end infinite;
+}
+
+h2{
+    color: white;
+}
+
+@keyframes typewriter{
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blinking-cursor{
+    from, to {
+        border-color: transparent
+    }
+    50%{
+        border-color: white
+    }
+}
+
+
+.game-container{
+    flex-direction: column;
+    min-height: 100vh;
+    display: none;
+}
+
+/* Animation code inspired by https://hackernoon.com/how-to-create-fancy-revealing-animations-with-these-simple-css-tricks-5b34614ae69a */
+.button-container, .change-level-container, .score-container{
+    opacity: 0;
+    animation: fade-in-up ease 0.8s forwards;
+}
+.score-container{
+    transition-duration: 0.6s;
+}
+
+.score-container:hover{
+    border-bottom: 1px solid yellow;
+    letter-spacing: 3px;
+}
+
+@keyframes fade-in-up{
+    from{
+        opacity: 0;
+        transform: translateY(30px)
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+/* @keyframes grow-left{
+    from{
+        transform: scaleX(0);
+    }
+    to{
+        transform: scaleX(1);
+    }
+} */
+
+.scores{
+    flex: 1;
+    order: 1;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.score-title{
+    display: inline;
+    color: white;
+}
+.score-value{
+    display: inline;
+    color: white;
+}
+
+.game{
+    flex: 10;
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.input{
+    padding-bottom: 20px;
+    max-height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex: 1;
+    order: 3;
+}
+
+.home-button{
+    flex: 1;
+    max-width: 84px;
+}
+
+.player-input{
+    flex: 2;
+    max-width: 500px; 
+}
+
+.level{
+    flex: 1;
+    max-width: 148px;
+} 
+
+input[type=text] {
+    border: none;
+    /* outline: 0; */
+    background: transparent;
+    border-bottom: 1px solid white;
+    text-align: center;
+    color: white;
+    font-size: 50px; 
+    caret-color: white;
+
+}
+
+input[type=text]:focus {
+    outline: none;
+}
+
+.word{
+    position: absolute;
+    font-weight: bold;
+    color: black;
+    animation-name: changeColor;
+    animation-duration: 70s;
+    font-size: 20px;
+    /* padding-top: 5px; */
+}
+
+.win{
+    flex: 1;
+    color: white;
+    font-size: 40px;
+    height: 100px;
+    position: absolute;
+    text-align: center;
+    display: none;
+  
+}
+
+.lose{
+    flex: 1;
+    color: white;
+    font-size: 40px;
+    height: 100px;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+
+.landing-screen{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+
+ .begin-button{
+    color: white;
+    background-color: transparent;
+    margin-top: 50px;
+    height: 80px;
+    width: 150px;
+    font-size: 20px;
+    
+    /* border-color: transparent; */
+    transition-duration: 0.6s;
+}
+
+.begin-button:hover{
+    background-color: white;
+    border-radius: 5px;
+    font-size: 25px;
+    color: black;
+}
+
+.level-screen{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30px;
+}
+
+.choose{
+    order: 1;
+    width: 100vw;
+    text-align: center;
+}
+.level1{
+    order: 2;
+    color: white;
+    height: 400px;
+}
+
+.level2{
+    order: 3;
+    color: white;
+    height: 400px;
+}
+
+
+
+.level1 h5, .level1 h3{
+position: relative;
+text-align: center;
+}
+
+.level2 h5, .level2 h3{
+position: relative;
+text-align: center;
+}
+
+h5{
+    opacity: 0;
+}
+
+h3:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+h3:hover ~ h5{
+    animation: raiseOpacity ease 3s forwards;
+    /* opacity: 1; */
+}
+
+@keyframes raiseOpacity{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
+
+.play-level-one{
+    height: 40px;
+    width: 200px;
+    font-size: 18px;
+    background-color: transparent;
+    border: transparent;
+    border-radius: 3px;
+    color: white;
+    transition-duration: 0.6s;
+}
+.play-level-one:hover {
+    background-color: rgb(43, 181, 43);
+    font-size: 25px;
+    color: black;
+}
+
+.change-level{
+    background-color: transparent;
+    border: transparent;
+    color: white;
+    font-size: 18px;
+    height: 40px;
+    width: 200px;
+    border-radius: 3px;
+    transition-duration: 0.6s;
+}
+.change-level:hover {
+    background-color: rgb(43, 181, 43);
+    font-size: 25px;
+    color: black;
+}
+
+
+
+.play-level-two{
+    height: 40px;
+    width: 200px;
+    font-size: 18px;
+    background-color: transparent;
+    border: transparent;
+    border-radius: 3px;
+    color: white;
+    transition-duration: 0.6s;
+}
+.play-level-two:hover {
+    background-color: rgb(43, 181, 43);
+    font-size: 25px;
+    color: black;
+}
+
+.play-level-three{
+    display: none;
+}
+.misses{
+    display: inline-block;
+    color: white;
+}
+
+.misses-value{
+    color: white;
+    display: inline-block;
+}
+
+
+
+
+@keyframes changeColor{
+    0% {
+        color: #15de00;
+    }
+    25%{
+        color: #bc9100;
+    }
+    40%{
+        color: #df0000;
+    }
+}
+
+.textBox {
+    width: 100%;
+    animation: stretchleft ease-in 1s forwards; 
+}
+
+@keyframes stretchleft {
+    from{
+        width: 0%;
+        /* transform: translateX(-30px) */
+    }
+    to{
+        width: 100%;
+    }
+}
+
+img {
+    height: 50px;
+}
+
+
+
+
+
+
