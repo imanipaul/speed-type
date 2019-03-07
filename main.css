@@ -205,17 +205,37 @@ input[type=text]:focus {
 }
 
 .level-screen{
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30px;
 }
 
-.level-wrapper{
-    border: 2px solid yellow;
-    padding: 5px 10px;
+
+
+.level1 h5, .level1 h3{
+position: relative;
+text-align: center;
 }
+
+.level2 h5, .level2 h3{
+position: relative;
+text-align: center;
+}
+
+h5{
+    opacity: 0;
+}
+
+h3:hover ~ h5{
+    animation: raiseOpacity ease 5s forwards;
+    /* opacity: 1; */
+}
+
+
+
+
+
 
 .play-level-one{
     height: 40px;
@@ -282,6 +302,8 @@ input[type=text]:focus {
 
 .level1{
     color: white;
+    
+   
 }
 
 .level2{
