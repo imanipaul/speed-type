@@ -151,6 +151,7 @@ input[type=text]:focus {
 
 .word{
     position: absolute;
+    font-weight: bold;
     color: black;
     animation-name: changeColor;
     animation-duration: 70s;
