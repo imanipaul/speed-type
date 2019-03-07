@@ -15,6 +15,8 @@ const playTwo = document.querySelector('.play-level-two')
 const levelOneTag = document.querySelector('.level-one-tag')
 const levelTwoTag = document.querySelector('.level-two-tag')
 let multipleWords;
+let interval = 2000;
+
 
 
 const setDisplay = function(location, target){
@@ -22,6 +24,7 @@ const setDisplay = function(location, target){
 }
 
 homeButton.addEventListener('click', function(){
+    clearInterval(multipleWords)
     setDisplay(landingPage, 'flex')
     setDisplay(gameContainer, 'none')
     
@@ -87,8 +90,32 @@ const moveWord = function (word) {
         newLeftPosition = ((leftPositionInt + 1).toString()) + 'px'
         word.style.left = newLeftPosition
     }
-    else {
-        word.remove()
+    // else if (leftPositionInt >= game.clientWidth) {
+    //     word.remove()
+    //     // console.log('removed')
+    //     // scoreValueInt = getCurrentScore()
+    //     // scoreValueInt -=10
+    //     // document.querySelector('.score-value').innerHTML = scoreValueInt.toString()
+
+
+    // }
+}
+
+const removeWord = function(word){
+    currentWords = getCurrentWords()
+    let game = document.querySelector('.game')
+
+    for (let i = 0; i < currentWords.length; i ++){
+        leftPositionInt = parseInt(currentWords[i].style.left)
+        if (leftPositionInt >= game.clientWidth){
+            currentWords[i].remove()
+            console.log('removed')
+            scoreValueInt = getCurrentScore()
+            scoreValueInt -=10
+            document.querySelector('.score-value').innerHTML = scoreValueInt.toString()
+        
+        
+        }
     }
 }
 
@@ -114,6 +141,9 @@ const getCurrentScore = function(){
     return currentScoreInt = parseInt(currentScore)
 }
 
+const resetScore = function(){
+    document.querySelector('.score-value').innerText = '0';
+}
 
 const updateScore = function () {
     scoreValueInt = getCurrentScore()
@@ -137,17 +167,13 @@ const removeCurrentWords = function(){
         }
 }
 
-
-
-
 const winLevel = function () {
-    if (getCurrentScore() > 10) {
+    if (getCurrentScore() > 30) {
         clearInterval(multipleWords)
         setDisplay(winMessage, 'block')
         removeCurrentWords() 
     }
 }
-
 
 textBox.addEventListener('keydown', function (evt) {
     if (evt.keyCode === 13) {
@@ -165,23 +191,26 @@ textBox.addEventListener('keydown', function (evt) {
     }
 })
 
-let interval = 2000;
-
-
 
 const startGame = function(speed) {
+
     multipleWords = setInterval(function () {
         createWord(words, speed)
+        removeWord()
         winLevel()
     }, interval)
 }
 
 const levelOne = function(){
+    setDisplay(winMessage, 'none')
+    resetScore()
     interval = 2000;
     startGame(20)
 }
 
 const levelTwo = function(){
+    setDisplay(winMessage, 'none')
+    resetScore()
     interval = 1000;
     startGame(10)
 }

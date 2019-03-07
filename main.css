@@ -1,7 +1,41 @@
 body{
-    background-color: #545454;
+    background-image: url('images/blackboard\ texture\ 0102.jpg');
+    /* background-color: black; */
 
 }
+
+h1{
+    font-family: 'Special Elite', cursive;
+    color: #1FB0E7;
+    font-size: 100px;
+    overflow: hidden;
+    border-right: 10px solid white;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 10px;
+    animation: 
+    typewriter 3s steps(40, end),
+    blinking-cursor .5s step-end infinite;
+}
+
+@keyframes typewriter{
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blinking-cursor{
+    from, to {
+        border-color: transparent
+    }
+    50%{
+        border-color: white
+    }
+}
+
 
 .game-container{
     flex-direction: column;
@@ -9,9 +43,44 @@ body{
     display: none;
 }
 
+/* Animation code inspired by https://hackernoon.com/how-to-create-fancy-revealing-animations-with-these-simple-css-tricks-5b34614ae69a */
+.button-container, .change-level-container, .score-container{
+    opacity: 0;
+    animation: fade-in-up ease 0.8s forwards;
+}
+.score-container{
+    transition-duration: 0.6s;
+}
+
+.score-container:hover{
+    border-bottom: 1px solid yellow;
+    letter-spacing: 3px;
+}
+
+@keyframes fade-in-up{
+    from{
+        opacity: 0;
+        transform: translateY(30px)
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+/* @keyframes grow-left{
+    from{
+        transform: scaleX(0);
+    }
+    to{
+        transform: scaleX(1);
+    }
+} */
+
 .scores{
     flex: 1;
     order: 1;
+    padding-top: 15px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -33,9 +102,7 @@ body{
     justify-content: center;
 }
 
-.startButton{
-    display: none;
-}
+
 
 .input{
     padding-bottom: 20px;
@@ -89,6 +156,8 @@ input[type=text]:focus {
 
 .win{
     flex: 1;
+    color: white;
+    font-size: 40px;
     height: 100px;
     position: absolute;
     text-align: center;
@@ -102,16 +171,27 @@ input[type=text]:focus {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #545454;
 }
 
-.landing-screen h1{
-    color: #1FB0E7;
+
+
+ .begin-button{
+    color: white;
+    background-color: transparent;
+    margin-top: 50px;
+    height: 80px;
+    width: 150px;
+    font-size: 20px;
+    
+    /* border-color: transparent; */
+    transition-duration: 0.6s;
 }
 
-.landing-screen .begin-button{
+.begin-button:hover{
+    background-color: white;
+    border-radius: 5px;
+    font-size: 25px;
     color: black;
-    background-color: yellow;
 }
 
 .level-screen{
@@ -127,18 +207,75 @@ input[type=text]:focus {
     padding: 5px 10px;
 }
 
-.play-level-two{
-    display: none;
+.play-level-one{
+    height: 40px;
+    width: 200px;
+    font-size: 18px;
+    background-color: transparent;
+    border: transparent;
+    border-radius: 3px;
+    color: white;
+    transition-duration: 0.6s;
 }
+.play-level-one:hover {
+    background-color: rgb(43, 181, 43);
+    font-size: 25px;
+    color: black;
+}
+
+.change-level{
+    background-color: transparent;
+    border: transparent;
+    color: white;
+    font-size: 18px;
+    height: 40px;
+    width: 200px;
+    border-radius: 3px;
+    transition-duration: 0.6s;
+}
+.change-level:hover {
+    background-color: rgb(43, 181, 43);
+    font-size: 25px;
+    color: black;
+}
+
+
+
+.play-level-two{
+    height: 40px;
+    width: 200px;
+    font-size: 18px;
+    background-color: transparent;
+    border: transparent;
+    border-radius: 3px;
+    color: white;
+    transition-duration: 0.6s;
+}
+.play-level-two:hover {
+    background-color: rgb(43, 181, 43);
+    font-size: 25px;
+    color: black;
+}
+
 .play-level-three{
     display: none;
 }
 .level-one-tag{
     display: none;
+    color: white;
 }
 
 .level-two-tag{
+    color: white;
     display: none;
+}
+
+.level1{
+    color: white;
+}
+
+.level2{
+    color: white;
 }
 
 
@@ -156,6 +293,17 @@ input[type=text]:focus {
 
 .textBox {
     width: 100%;
+    animation: stretchleft ease-in 1s forwards; 
+}
+
+@keyframes stretchleft {
+    from{
+        width: 0%;
+        /* transform: translateX(-30px) */
+    }
+    to{
+        width: 100%;
+    }
 }
 
 img {
