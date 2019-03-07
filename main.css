@@ -18,6 +18,10 @@ h1{
     blinking-cursor .5s step-end infinite;
 }
 
+h2{
+    color: white;
+}
+
 @keyframes typewriter{
     from {
         width: 0;
@@ -205,10 +209,30 @@ input[type=text]:focus {
 }
 
 .level-screen{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     min-height: 100vh;
     justify-content: space-around;
     align-items: center;
     font-size: 30px;
+}
+
+.choose{
+    order: 1;
+    width: 100vw;
+    text-align: center;
+}
+.level1{
+    order: 2;
+    color: white;
+    height: 400px;
+}
+
+.level2{
+    order: 3;
+    color: white;
+    height: 400px;
 }
 
 
@@ -227,13 +251,24 @@ h5{
     opacity: 0;
 }
 
+h3:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 h3:hover ~ h5{
-    animation: raiseOpacity ease 5s forwards;
+    animation: raiseOpacity ease 3s forwards;
     /* opacity: 1; */
 }
 
-
-
+@keyframes raiseOpacity{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
 
 
 
@@ -300,15 +335,7 @@ h3:hover ~ h5{
     display: inline-block;
 }
 
-.level1{
-    color: white;
-    
-   
-}
 
-.level2{
-    color: white;
-}
 
 
 @keyframes changeColor{
