@@ -2,6 +2,7 @@ const words = ['splurge', 'sea', 'conscious', 'favor', 'medieval', 'clerk', 'pas
 
 const textBox = document.querySelector('.textBox')
 const winMessage = document.querySelector('.win')
+const loseMessage = document.querySelector('.lose')
 const playOne = document.querySelector('.play-level-one')
 const changeLevelButton = document.querySelector('.change-level')
 const gameContainer = document.querySelector('.game-container')
@@ -14,8 +15,10 @@ const levelTwoButton = document.querySelector('.level2')
 const playTwo = document.querySelector('.play-level-two')
 const levelOneTag = document.querySelector('.level-one-tag')
 const levelTwoTag = document.querySelector('.level-two-tag')
+const missedWordsValue = document.querySelector('.misses-value')
 let multipleWords;
 let interval = 2000;
+let missedWordsCount = 0;
 
 
 
@@ -25,8 +28,13 @@ const setDisplay = function(location, target){
 
 homeButton.addEventListener('click', function(){
     clearInterval(multipleWords)
+    removeCurrentWords()
+    resetScore()
+    resetMisses()
     setDisplay(landingPage, 'flex')
     setDisplay(gameContainer, 'none')
+    setDisplay(winMessage, 'none')
+    setDisplay(loseMessage, 'none')
     
 })
 
@@ -43,8 +51,6 @@ levelOneButton.addEventListener('click', function(){
     setDisplay(gameContainer, 'flex')
     setDisplay(playOne, 'inline-block')
     setDisplay(playTwo, 'none')
-    setDisplay(levelOneTag, 'block')
-    setDisplay(levelTwoTag, 'none')
     
 })
 
@@ -54,8 +60,6 @@ levelTwoButton.addEventListener('click', function(){
     setDisplay(gameContainer, 'flex')
     setDisplay(playOne, 'none')
     setDisplay(playTwo, 'inline-block')
-    setDisplay(levelOneTag, 'none')
-    setDisplay(levelTwoTag, 'block')
 })
 
 changeLevelButton.addEventListener('click', function(){
@@ -63,6 +67,9 @@ changeLevelButton.addEventListener('click', function(){
     setDisplay(gameContainer, 'none')
     setDisplay(levelPage, 'flex')
     clearInterval(multipleWords)
+    resetMisses()
+    resetScore()
+    removeCurrentWords()
 })
 
 
@@ -90,15 +97,10 @@ const moveWord = function (word) {
         newLeftPosition = ((leftPositionInt + 1).toString()) + 'px'
         word.style.left = newLeftPosition
     }
-    // else if (leftPositionInt >= game.clientWidth) {
-    //     word.remove()
-    //     // console.log('removed')
-    //     // scoreValueInt = getCurrentScore()
-    //     // scoreValueInt -=10
-    //     // document.querySelector('.score-value').innerHTML = scoreValueInt.toString()
+}
 
-
-    // }
+const updateMissedWords = function(){
+    missedWordsValue.innerHTML = missedWordsCount.toString()
 }
 
 const removeWord = function(word){
@@ -110,11 +112,8 @@ const removeWord = function(word){
         if (leftPositionInt >= game.clientWidth){
             currentWords[i].remove()
             console.log('removed')
-            scoreValueInt = getCurrentScore()
-            scoreValueInt -=10
-            document.querySelector('.score-value').innerHTML = scoreValueInt.toString()
-        
-        
+            missedWordsCount += 1;
+            updateMissedWords()
         }
     }
 }
@@ -129,7 +128,6 @@ const createWord = function (words, speed) {
     wordDiv.style.setProperty('left', '10px')
     wordDiv.style.setProperty('top', randomPosition() + 'px')
 
-
     let movingWord = setInterval(function () {
         moveWord(wordDiv)
     }, speed)
@@ -143,6 +141,11 @@ const getCurrentScore = function(){
 
 const resetScore = function(){
     document.querySelector('.score-value').innerText = '0';
+}
+
+const resetMisses = function(){
+    missedWordsValue.innerHTML = '0'
+    missedWordsCount = 0;
 }
 
 const updateScore = function () {
@@ -168,10 +171,21 @@ const removeCurrentWords = function(){
 }
 
 const winLevel = function () {
-    if (getCurrentScore() > 30) {
+    if (getCurrentScore() > 100) {
         clearInterval(multipleWords)
         setDisplay(winMessage, 'block')
         removeCurrentWords() 
+    }
+}
+
+const loseLevel = function() {
+    if (missedWordsCount === 5){
+        clearInterval(multipleWords)
+        setDisplay(loseMessage, 'block')
+        removeCurrentWords()
+        resetMisses()
+        console.log('lose')
+        
     }
 }
 
@@ -193,24 +207,33 @@ textBox.addEventListener('keydown', function (evt) {
 
 
 const startGame = function(speed) {
-
     multipleWords = setInterval(function () {
         createWord(words, speed)
         removeWord()
         winLevel()
+        loseLevel()
     }, interval)
 }
 
 const levelOne = function(){
     setDisplay(winMessage, 'none')
+    setDisplay(loseMessage, 'none')
+    resetMisses()
     resetScore()
+    clearInterval(multipleWords)
+    removeCurrentWords()
     interval = 2000;
     startGame(20)
+    console.log('playing 1')
 }
 
 const levelTwo = function(){
     setDisplay(winMessage, 'none')
+    setDisplay(loseMessage, 'none')
+    resetMisses()
     resetScore()
+    clearInterval(multipleWords)
+    removeCurrentWords()
     interval = 1000;
     startGame(10)
 }

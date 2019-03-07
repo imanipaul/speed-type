@@ -165,6 +165,16 @@ input[type=text]:focus {
   
 }
 
+.lose{
+    flex: 1;
+    color: white;
+    font-size: 40px;
+    height: 100px;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+
 .landing-screen{
     display: flex;
     flex-direction: column;
@@ -260,14 +270,14 @@ input[type=text]:focus {
 .play-level-three{
     display: none;
 }
-.level-one-tag{
-    display: none;
+.misses{
+    display: inline-block;
     color: white;
 }
 
-.level-two-tag{
+.misses-value{
     color: white;
-    display: none;
+    display: inline-block;
 }
 
 .level1{
