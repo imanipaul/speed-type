@@ -2,6 +2,7 @@
 
 ### Speed type is a fun, interactive typing game that helps players increase their typing speed. ###
 
+
 #### Instructions: ####
 
 - Start by choosing a level. Level one introduces words to the screen in a slow and steady pace. Level two sends them in faster!
@@ -12,9 +13,10 @@
 
 - However, if you miss 5 words, you lose. :cry:
 
-Happy typing!
+Play [here.](https://imanipaul.github.io/speed-type/) Happy typing!
 
 
+Game Images:
 
 ![Home Page](https://i.ibb.co/X3cst4w/1.png)
 ![Level Page](https://i.ibb.co/YjSrdbk/2.png)
