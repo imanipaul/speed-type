@@ -21,6 +21,10 @@ h2{
     color: white;
 }
 
+h2, h3, h4, h5{
+    font-family: 'Special Elite', cursive;}
+
+
 @keyframes typewriter{
     from {
         width: 0;
@@ -118,7 +122,7 @@ h2{
     max-width: 500px; 
 }
 
-.level{
+.misses-container{
     flex: 1;
     max-width: 148px;
 } 
@@ -139,11 +143,12 @@ input[type=text]:focus {
 }
 
 .word{
+    font-family: 'Roboto Slab', serif;
     position: absolute;
     font-weight: bold;
     color: black;
     animation-name: changeColor;
-    animation-duration: 70s;
+    animation-duration: 50s;
     font-size: 20px;
 }
 
@@ -179,6 +184,7 @@ input[type=text]:focus {
 
 
  .begin-button{
+    font-family: 'Roboto Slab', serif;
     color: white;
     background-color: transparent;
     margin-top: 50px;
@@ -190,7 +196,7 @@ input[type=text]:focus {
 
 .begin-button:hover{
     background-color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 25px;
     color: black;
 }
@@ -220,6 +226,14 @@ input[type=text]:focus {
     order: 3;
     color: white;
     height: 400px;
+}
+
+.level2 h5{
+    font-style: italic;
+}
+
+.level1 h5{
+    letter-spacing: 8px;
 }
 
 
@@ -259,6 +273,7 @@ h3:hover ~ h5{
 
 
 .play-level-one{
+    font-family: 'Special Elite', cursive;
     height: 40px;
     width: 200px;
     font-size: 18px;
@@ -275,6 +290,7 @@ h3:hover ~ h5{
 }
 
 .change-level{
+    font-family: 'Special Elite', cursive;
     background-color: transparent;
     border: transparent;
     color: white;
@@ -293,6 +309,7 @@ h3:hover ~ h5{
 
 
 .play-level-two{
+    font-family: 'Special Elite', cursive;
     height: 40px;
     width: 200px;
     font-size: 18px;
@@ -312,11 +329,27 @@ h3:hover ~ h5{
     display: none;
 }
 .misses{
+    font-family: 'Special Elite', cursive;
     display: inline-block;
     color: white;
+    animation: changeRed, ease-in, 1s, forwards;
+}
+
+.red{
+    animation: toggleRed, ease-in, 0.5s, forwards;
+}
+
+@keyframes changeRed{
+    0%{
+        color: white;
+    }
+    100%{
+        color: red;
+    }
 }
 
 .misses-value{
+    font-family: 'Special Elite', cursive;
     color: white;
     display: inline-block;
 }
@@ -337,6 +370,7 @@ h3:hover ~ h5{
 }
 
 .textBox {
+    font-family: 'Roboto Slab', serif;
     width: 100%;
     animation: stretchleft ease-in 1s forwards; 
 }
@@ -351,7 +385,13 @@ h3:hover ~ h5{
 }
 
 img {
-    height: 50px;
+    height: 40px;
+    transition-duration: 0.5s;
+}
+
+img:hover{
+    height: 60px;
+    /* width: 60px; */
 }
 
 
