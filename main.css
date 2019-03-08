@@ -1,9 +1,8 @@
 body{
     background-image: url('images/blackboard\ texture\ 0102.jpg');
-    /* background-color: black; */
-
 }
 
+/* Typewriter animation code inspired by https://css-tricks.com/snippets/css/typewriter-effect/ */
 h1{
     font-family: 'Special Elite', cursive;
     color: #1FB0E7;
@@ -72,15 +71,6 @@ h2{
     }
 }
 
-/* @keyframes grow-left{
-    from{
-        transform: scaleX(0);
-    }
-    to{
-        transform: scaleX(1);
-    }
-} */
-
 .scores{
     flex: 1;
     order: 1;
@@ -135,7 +125,6 @@ h2{
 
 input[type=text] {
     border: none;
-    /* outline: 0; */
     background: transparent;
     border-bottom: 1px solid white;
     text-align: center;
@@ -156,7 +145,6 @@ input[type=text]:focus {
     animation-name: changeColor;
     animation-duration: 70s;
     font-size: 20px;
-    /* padding-top: 5px; */
 }
 
 .win{
@@ -197,8 +185,6 @@ input[type=text]:focus {
     height: 80px;
     width: 150px;
     font-size: 20px;
-    
-    /* border-color: transparent; */
     transition-duration: 0.6s;
 }
 
@@ -259,7 +245,6 @@ h3:hover{
 
 h3:hover ~ h5{
     animation: raiseOpacity ease 3s forwards;
-    /* opacity: 1; */
 }
 
 @keyframes raiseOpacity{
@@ -359,7 +344,6 @@ h3:hover ~ h5{
 @keyframes stretchleft {
     from{
         width: 0%;
-        /* transform: translateX(-30px) */
     }
     to{
         width: 100%;
