@@ -123,9 +123,40 @@ h2, h3, h4, h5{
 }
 
 .misses-container{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    align-items: flex-end;
     flex: 1;
     max-width: 148px;
+    /* animation: changeRed ease 1s forwards; */
 } 
+
+.misses-value{
+    color: white;
+}
+
+.change-red{
+    animation: changeRed, ease, forwards;
+    animation-duration: 0.5s;
+}
+
+@keyframes changeRed{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+        font-size: 20px;
+        color: red;
+        font-weight: bold;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+
 
 input[type=text] {
     border: none;
@@ -146,7 +177,7 @@ input[type=text]:focus {
     font-family: 'Roboto Slab', serif;
     position: absolute;
     font-weight: bold;
-    color: black;
+    /* color: black; */
     animation-name: changeColor;
     animation-duration: 50s;
     font-size: 20px;
@@ -332,28 +363,26 @@ h3:hover ~ h5{
     font-family: 'Special Elite', cursive;
     display: inline-block;
     color: white;
-    animation: changeRed, ease-in, 1s, forwards;
 }
 
-.red{
-    animation: toggleRed, ease-in, 0.5s, forwards;
+.remove-word-transition{
+    /* text-decoration: underline; */
+    animation: increaseSize, ease, linear;
+    animation-duration: 1s;
 }
 
-@keyframes changeRed{
+@keyframes increaseSize{
     0%{
-        color: white;
+        opacity: 1;
+        color: yellow;
+        font-size: 25px;
     }
     100%{
-        color: red;
+        opacity: 0;
+        color: rgb(255, 255, 174);
+        font-size: 40px;
     }
 }
-
-.misses-value{
-    font-family: 'Special Elite', cursive;
-    color: white;
-    display: inline-block;
-}
-
 
 
 

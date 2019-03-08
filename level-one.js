@@ -82,6 +82,8 @@ const randomPosition = function () {
     return position.toString()
 }
 
+
+
 const moveWord = function (word) {
     let game = document.querySelector('.game')
     let leftPosition = word.style.left
@@ -93,18 +95,18 @@ const moveWord = function (word) {
         newLeftPosition = ((leftPositionInt + 1).toString()) + 'px'
         word.style.left = newLeftPosition
     }
-}
-
-const toggleMissedWords = function () {
-    document.querySelector('.misses-container').classList.toggle('red')
-    // missedWordsValue.classList.toggle('red')
+    
 }
 
 const updateMissedWords = function () {
     missedWordsValue.innerHTML = missedWordsCount.toString()
-    toggleMissedWords()
-
+    missedWordsValue.classList.add('change-red')
+    missedWordsValue.addEventListener('animationend', function(){
+        missedWordsValue.classList.remove('change-red')
+        missedWordsValue.style.color = 'white'
+    })
 }
+
 
 const removeWord = function (word) {
     currentWords = getCurrentWords()
@@ -112,9 +114,8 @@ const removeWord = function (word) {
 
     for (let i = 0; i < currentWords.length; i++) {
         leftPositionInt = parseInt(currentWords[i].style.left)
-        if (leftPositionInt >= game.clientWidth) {
+        if (leftPositionInt == game.clientWidth) {
             currentWords[i].remove()
-            console.log('removed')
             missedWordsCount += 1;
             updateMissedWords()
         }
@@ -186,8 +187,6 @@ const loseLevel = function () {
         clearInterval(multipleWords)
         setDisplay(loseMessage, 'block')
         removeCurrentWords()
-        resetMisses()
-        console.log('lose')
     }
 }
 
@@ -195,7 +194,10 @@ const matchWord = function () {
     let currentWords = document.querySelectorAll('.word')
     for (let i = 0; i < currentWords.length; i++) {
         if (textBox.value === currentWords[i].innerHTML) {
-            currentWords[i].remove()
+            currentWords[i].classList.add('remove-word-transition')
+            currentWords[i].addEventListener('animationend', function(){
+                currentWords[i].remove()
+            })
             return true
         }
     }
@@ -244,11 +246,9 @@ const levelTwo = function () {
     startGame(10)
 }
 
-
 playOne.addEventListener('click', function () {
     textBox.select()
     levelOne()
-
 })
 
 playTwo.addEventListener('click', function () {
