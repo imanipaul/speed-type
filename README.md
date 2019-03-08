@@ -14,7 +14,8 @@
 
 Happy typing!
 
-Game Play:
+
+
 ![Home Page](https://i.ibb.co/X3cst4w/1.png)
 ![Level Page](https://i.ibb.co/YjSrdbk/2.png)
 ![Game Play](https://i.ibb.co/BGSSmdf/3.png)
