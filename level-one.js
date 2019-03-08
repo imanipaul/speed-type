@@ -214,7 +214,6 @@ textBox.addEventListener('keydown', function (evt) {
     }
 })
 
-
 const startGame = function (speed) {
     multipleWords = setInterval(function () {
         createWord(words, speed)
