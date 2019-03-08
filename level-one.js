@@ -95,13 +95,13 @@ const moveWord = function (word) {
         newLeftPosition = ((leftPositionInt + 1).toString()) + 'px'
         word.style.left = newLeftPosition
     }
-    
+
 }
 
 const updateMissedWords = function () {
     missedWordsValue.innerHTML = missedWordsCount.toString()
     missedWordsValue.classList.add('change-red')
-    missedWordsValue.addEventListener('animationend', function(){
+    missedWordsValue.addEventListener('animationend', function () {
         missedWordsValue.classList.remove('change-red')
         missedWordsValue.style.color = 'white'
     })
@@ -195,7 +195,7 @@ const matchWord = function () {
     for (let i = 0; i < currentWords.length; i++) {
         if (textBox.value === currentWords[i].innerHTML) {
             currentWords[i].classList.add('remove-word-transition')
-            currentWords[i].addEventListener('animationend', function(){
+            currentWords[i].addEventListener('animationend', function () {
                 currentWords[i].remove()
             })
             return true
@@ -207,7 +207,7 @@ textBox.addEventListener('keydown', function (evt) {
     if (evt.keyCode === 13) {
         evt.preventDefault()
         matchWord()
-        if (matchWord){
+        if (matchWord) {
             resetBox()
             updateScore()
         }

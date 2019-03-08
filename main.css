@@ -233,7 +233,7 @@ input[type=text]:focus {
 }
 
 .level-screen{
-    display: flex;
+    display: none;
     flex-direction: row;
     flex-wrap: wrap;
     min-height: 100vh;
