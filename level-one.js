@@ -194,23 +194,27 @@ const matchWord = function () {
     let currentWords = document.querySelectorAll('.word')
     for (let i = 0; i < currentWords.length; i++) {
         if (textBox.value === currentWords[i].innerHTML) {
+            console.log('matched')
             currentWords[i].classList.add('remove-word-transition')
             currentWords[i].addEventListener('animationend', function () {
                 currentWords[i].remove()
             })
-            return true
+            updateScore()
+            resetBox()
+
+        }
+        else if (textBox.value !== currentWords[i].innerHTML) {
+            console.log('missed')
+            resetBox()
         }
     }
 }
+
 
 textBox.addEventListener('keydown', function (evt) {
     if (evt.keyCode === 13) {
         evt.preventDefault()
         matchWord()
-        if (matchWord) {
-            resetBox()
-            updateScore()
-        }
     }
 })
 
