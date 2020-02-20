@@ -304,9 +304,20 @@ const matchWord = function() {
     });
   } else {
     console.log("missed");
-    resetBox();
+
+    textBox.classList.add("shake");
+    textBox.addEventListener("animationend", function() {
+      textBox.classList.remove("shake");
+      //   resetBox();
+    });
+
+    // resetBox();
   }
 };
+
+textBox.addEventListener("animationend", function() {
+  textBox.classList.remove("show");
+});
 
 textBox.addEventListener("keydown", function(evt) {
   if (evt.keyCode === 13) {
