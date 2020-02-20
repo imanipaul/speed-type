@@ -1,430 +1,442 @@
-body{
-    background-image: url('images/blackboard\ texture\ 0102.jpg');
+body {
+  background-image: url("images/blackboard\ texture\ 0102.jpg");
 }
 
 /* Typewriter animation code inspired by https://css-tricks.com/snippets/css/typewriter-effect/ */
-h1{
-    font-family: 'Special Elite', cursive;
-    color: #1FB0E7;
-    font-size: 100px;
-    overflow: hidden;
-    border-right: 10px solid white;
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: 10px;
-    animation: 
-    typewriter 3s steps(40, end),
-    blinking-cursor .5s step-end infinite;
+h1 {
+  font-family: "Special Elite", cursive;
+  color: #1fb0e7;
+  font-size: 100px;
+  overflow: hidden;
+  border-right: 10px solid white;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 10px;
+  animation: typewriter 3s steps(40, end),
+    blinking-cursor 0.5s step-end infinite;
 }
 
-h2{
-    color: white;
+h2 {
+  color: white;
 }
 
-h2, h3, h4, h5{
-    font-family: 'Special Elite', cursive;}
-
-
-@keyframes typewriter{
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%
-    }
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Special Elite", cursive;
 }
 
-@keyframes blinking-cursor{
-    from, to {
-        border-color: transparent
-    }
-    50%{
-        border-color: white
-    }
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
+@keyframes blinking-cursor {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
 
-.game-container{
-    flex-direction: column;
-    min-height: 100vh;
-    display: none;
+.game-container {
+  flex-direction: column;
+  min-height: 100vh;
+  display: none;
 }
 
 /* Animation code inspired by https://hackernoon.com/how-to-create-fancy-revealing-animations-with-these-simple-css-tricks-5b34614ae69a */
-.button-container, .change-level-container, .score-container{
+.button-container,
+.change-level-container,
+.score-container {
+  opacity: 0;
+  animation: fade-in-up ease 0.8s forwards;
+}
+.score-container {
+  transition-duration: 0.6s;
+}
+
+.score-container:hover {
+  border-bottom: 1px solid yellow;
+  letter-spacing: 3px;
+}
+
+@keyframes fade-in-up {
+  from {
     opacity: 0;
-    animation: fade-in-up ease 0.8s forwards;
-}
-.score-container{
-    transition-duration: 0.6s;
-}
-
-.score-container:hover{
-    border-bottom: 1px solid yellow;
-    letter-spacing: 3px;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-@keyframes fade-in-up{
-    from{
-        opacity: 0;
-        transform: translateY(30px)
-    }
-    to{
-        opacity: 1;
-        transform: translateX(0)
-    }
+.scores {
+  flex: 1;
+  order: 1;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.score-title {
+  display: inline;
+  color: white;
+}
+.score-value {
+  display: inline;
+  color: white;
 }
 
-.scores{
-    flex: 1;
-    order: 1;
-    padding-top: 15px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.score-title{
-    display: inline;
-    color: white;
-}
-.score-value{
-    display: inline;
-    color: white;
+.game {
+  flex: 10;
+  order: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.game{
-    flex: 10;
-    order: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.input {
+  padding-bottom: 20px;
+  max-height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex: 1;
+  order: 3;
 }
 
-
-
-.input{
-    padding-bottom: 20px;
-    max-height: 70px;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    flex: 1;
-    order: 3;
+.home-button {
+  flex: 1;
+  max-width: 84px;
 }
 
-.home-button{
-    flex: 1;
-    max-width: 84px;
+.player-input {
+  flex: 2;
+  max-width: 500px;
 }
 
-.player-input{
-    flex: 2;
-    max-width: 500px; 
+.misses-container {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  align-items: flex-end;
+  flex: 1;
+  max-width: 148px;
+  /* animation: changeRed ease 1s forwards; */
 }
 
-.misses-container{
-    display: flex;
-    justify-content: space-around;
-    color: white;
-    align-items: flex-end;
-    flex: 1;
-    max-width: 148px;
-    /* animation: changeRed ease 1s forwards; */
-} 
-
-.misses-value{
-    color: white;
+.misses-value {
+  color: white;
 }
 
-.change-red{
-    animation: changeRed, ease, forwards;
-    animation-duration: 0.5s;
+.change-red {
+  animation: changeRed, ease, forwards;
+  animation-duration: 0.5s;
 }
 
-@keyframes changeRed{
-    0%{
-        opacity: 0;
-    }
-    50%{
-        opacity: 1;
-        font-size: 20px;
-        color: red;
-        font-weight: bold;
-    }
-    100%{
-        opacity: 0;
-    }
-}
-
-
-
-input[type=text] {
-    border: none;
-    background: transparent;
-    border-bottom: 1px solid white;
-    text-align: center;
-    color: white;
-    font-size: 50px; 
-    caret-color: white;
-
-}
-
-input[type=text]:focus {
-    outline: none;
-}
-
-.word{
-    font-family: 'Roboto Slab', serif;
-    position: absolute;
+@keyframes changeRed {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    font-size: 20px;
+    color: red;
     font-weight: bold;
-    /* color: black; */
-    animation-name: changeColor;
-    animation-duration: 50s;
-    font-size: 20px;
-}
-
-.win{
-    flex: 1;
-    color: white;
-    font-size: 40px;
-    height: 100px;
-    position: absolute;
-    text-align: center;
-    display: none;
-  
-}
-
-.lose{
-    flex: 1;
-    color: white;
-    font-size: 40px;
-    height: 100px;
-    position: absolute;
-    text-align: center;
-    display: none;
-}
-
-.landing-screen{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-
-
- .begin-button{
-    font-family: 'Roboto Slab', serif;
-    color: white;
-    background-color: transparent;
-    margin-top: 50px;
-    height: 80px;
-    width: 150px;
-    font-size: 20px;
-    transition-duration: 0.6s;
-}
-
-.begin-button:hover{
-    background-color: white;
-    border-radius: 10px;
-    font-size: 25px;
-    color: black;
-}
-
-.level-screen{
-    display: none;
-    flex-direction: row;
-    flex-wrap: wrap;
-    min-height: 100vh;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 30px;
-}
-
-.choose{
-    order: 1;
-    width: 100vw;
-    text-align: center;
-}
-.level1{
-    order: 2;
-    color: white;
-    height: 400px;
-}
-
-.level2{
-    order: 3;
-    color: white;
-    height: 400px;
-}
-
-.level2 h5{
-    font-style: italic;
-}
-
-.level1 h5{
-    letter-spacing: 8px;
-}
-
-
-
-.level1 h5, .level1 h3{
-position: relative;
-text-align: center;
-}
-
-.level2 h5, .level2 h3{
-position: relative;
-text-align: center;
-}
-
-h5{
+  }
+  100% {
     opacity: 0;
+  }
 }
 
-h3:hover{
-    text-decoration: underline;
-    cursor: pointer;
+form {
+  border-bottom: 1px solid white;
 }
 
-h3:hover ~ h5{
-    animation: raiseOpacity ease 3s forwards;
+input[type="text"] {
+  border: none;
+  background: transparent;
+  text-align: center;
+  color: white;
+  font-size: 50px;
+  caret-color: white;
 }
 
-@keyframes raiseOpacity{
-    from{
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-    }
+input[type="text"]:focus {
+  outline: none;
 }
 
+.word {
+  font-family: "Roboto Slab", serif;
+  position: absolute;
+  font-weight: bold;
+  /* color: black; */
+  animation-name: changeColor;
+  animation-duration: 50s;
+  font-size: 20px;
+}
 
+.win {
+  flex: 1;
+  color: white;
+  font-size: 40px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+  display: none;
+}
 
-.play-level-one{
-    font-family: 'Special Elite', cursive;
-    height: 40px;
-    width: 200px;
-    font-size: 18px;
-    background-color: transparent;
-    border: transparent;
-    border-radius: 3px;
-    color: white;
-    transition-duration: 0.6s;
+.lose {
+  flex: 1;
+  color: white;
+  font-size: 40px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+  display: none;
+}
+
+.landing-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.begin-button {
+  font-family: "Roboto Slab", serif;
+  color: white;
+  background-color: transparent;
+  margin-top: 50px;
+  height: 80px;
+  width: 150px;
+  font-size: 20px;
+  transition-duration: 0.6s;
+}
+
+.begin-button:hover {
+  background-color: white;
+  border-radius: 10px;
+  font-size: 25px;
+  color: black;
+}
+
+.level-screen {
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30px;
+}
+
+.choose {
+  order: 1;
+  width: 100vw;
+  text-align: center;
+}
+.level1 {
+  order: 2;
+  color: white;
+  height: 400px;
+}
+
+.level2 {
+  order: 3;
+  color: white;
+  height: 400px;
+}
+
+.level2 h5 {
+  font-style: italic;
+}
+
+.level1 h5 {
+  letter-spacing: 8px;
+}
+
+.level1 h5,
+.level1 h3 {
+  position: relative;
+  text-align: center;
+}
+
+.level2 h5,
+.level2 h3 {
+  position: relative;
+  text-align: center;
+}
+
+h5 {
+  opacity: 0;
+}
+
+h3:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+h3:hover ~ h5 {
+  animation: raiseOpacity ease 3s forwards;
+}
+
+@keyframes raiseOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.play-level-one {
+  font-family: "Special Elite", cursive;
+  height: 40px;
+  width: 200px;
+  font-size: 18px;
+  background-color: transparent;
+  border: transparent;
+  border-radius: 3px;
+  color: white;
+  transition-duration: 0.6s;
 }
 .play-level-one:hover {
-    background-color: rgb(43, 181, 43);
-    font-size: 25px;
-    color: black;
+  background-color: rgb(43, 181, 43);
+  font-size: 25px;
+  color: black;
 }
 
-.change-level{
-    font-family: 'Special Elite', cursive;
-    background-color: transparent;
-    border: transparent;
-    color: white;
-    font-size: 18px;
-    height: 40px;
-    width: 200px;
-    border-radius: 3px;
-    transition-duration: 0.6s;
+.change-level {
+  font-family: "Special Elite", cursive;
+  background-color: transparent;
+  border: transparent;
+  color: white;
+  font-size: 18px;
+  height: 40px;
+  width: 200px;
+  border-radius: 3px;
+  transition-duration: 0.6s;
 }
 .change-level:hover {
-    background-color: rgb(43, 181, 43);
-    font-size: 25px;
-    color: black;
+  background-color: rgb(43, 181, 43);
+  font-size: 25px;
+  color: black;
 }
 
-
-
-.play-level-two{
-    font-family: 'Special Elite', cursive;
-    height: 40px;
-    width: 200px;
-    font-size: 18px;
-    background-color: transparent;
-    border: transparent;
-    border-radius: 3px;
-    color: white;
-    transition-duration: 0.6s;
+.play-level-two {
+  font-family: "Special Elite", cursive;
+  height: 40px;
+  width: 200px;
+  font-size: 18px;
+  background-color: transparent;
+  border: transparent;
+  border-radius: 3px;
+  color: white;
+  transition-duration: 0.6s;
 }
 .play-level-two:hover {
-    background-color: rgb(43, 181, 43);
+  background-color: rgb(43, 181, 43);
+  font-size: 25px;
+  color: black;
+}
+
+.play-level-three {
+  display: none;
+}
+.misses {
+  font-family: "Special Elite", cursive;
+  display: inline-block;
+  color: white;
+}
+
+.remove-word-transition {
+  /* text-decoration: underline; */
+  animation: increaseSize, ease, linear;
+  animation-duration: 1s;
+}
+
+@keyframes increaseSize {
+  0% {
+    opacity: 1;
+    color: yellow;
     font-size: 25px;
-    color: black;
+  }
+  100% {
+    opacity: 0;
+    color: rgb(255, 255, 174);
+    font-size: 40px;
+  }
 }
 
-.play-level-three{
-    display: none;
-}
-.misses{
-    font-family: 'Special Elite', cursive;
-    display: inline-block;
-    color: white;
-}
-
-.remove-word-transition{
-    /* text-decoration: underline; */
-    animation: increaseSize, ease, linear;
-    animation-duration: 1s;
-}
-
-@keyframes increaseSize{
-    0%{
-        opacity: 1;
-        color: yellow;
-        font-size: 25px;
-    }
-    100%{
-        opacity: 0;
-        color: rgb(255, 255, 174);
-        font-size: 40px;
-    }
-}
-
-
-
-@keyframes changeColor{
-    0% {
-        color: #15de00;
-    }
-    25%{
-        color: #bc9100;
-    }
-    40%{
-        color: #df0000;
-    }
+@keyframes changeColor {
+  0% {
+    color: #15de00;
+  }
+  25% {
+    color: #bc9100;
+  }
+  40% {
+    color: #df0000;
+  }
 }
 
 .textBox {
-    font-family: 'Roboto Slab', serif;
-    width: 100%;
-    animation: stretchleft ease-in 1s forwards; 
+  font-family: "Roboto Slab", serif;
+  width: 100%;
+  animation: stretchleft ease-in 1s forwards;
 }
 
 @keyframes stretchleft {
-    from{
-        width: 0%;
-    }
-    to{
-        width: 100%;
-    }
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 img {
-    height: 40px;
-    transition-duration: 0.5s;
+  height: 40px;
+  transition-duration: 0.5s;
 }
 
-img:hover{
-    height: 60px;
-    /* width: 60px; */
+img:hover {
+  height: 60px;
+  /* width: 60px; */
 }
 
+.shake {
+  animation: shake 1s forwards;
+}
 
-
-
-
-
+@keyframes shake {
+  0% {
+    transform: translateX(0px);
+  }
+  20% {
+    transform: translateX(10px);
+  }
+  40% {
+    transform: translateX(-10px);
+  }
+  60% {
+    transform: translateX(10px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
