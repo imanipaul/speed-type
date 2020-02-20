@@ -156,6 +156,8 @@ levelTwoButton.addEventListener("click", function() {
 
 changeLevelButton.addEventListener("click", function() {
   setDisplay(landingPage, "none");
+  setDisplay(winMessage, "none");
+  setDisplay(loseMessage, "none");
   setDisplay(gameContainer, "none");
   setDisplay(levelPage, "flex");
   clearInterval(multipleWords);
@@ -206,8 +208,8 @@ const removeWord = function(word) {
     leftPositionInt = parseInt(currentWords[i].style.left);
     if (leftPositionInt == game.clientWidth) {
       currentWords[i].remove();
-      //   missedWordsCount += 1;
-      //   updateMissedWords();
+      missedWordsCount += 1;
+      updateMissedWords();
     }
   }
 };
