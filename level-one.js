@@ -308,7 +308,7 @@ const matchWord = function() {
     textBox.classList.add("shake");
     textBox.addEventListener("animationend", function() {
       textBox.classList.remove("shake");
-      //   resetBox();
+      resetBox();
     });
 
     // resetBox();

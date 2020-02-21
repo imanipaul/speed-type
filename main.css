@@ -420,7 +420,7 @@ img:hover {
 }
 
 .shake {
-  animation: shake 1s forwards;
+  animation: shake 0.5s forwards;
 }
 
 @keyframes shake {
@@ -429,7 +429,7 @@ img:hover {
     transform: translateX(0px);
   }
   20% {
-    transform: translateX(10px) translateY(-10px);
+    transform: translateX(10px);
   }
   40% {
     transform: translateX(-10px);
@@ -439,6 +439,7 @@ img:hover {
   }
   80% {
     transform: translateX(-10px);
+    color: red;
   }
   100% {
     color: white;
