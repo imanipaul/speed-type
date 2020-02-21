@@ -1,5 +1,7 @@
 body {
   background-image: url("images/blackboard\ texture\ 0102.jpg");
+  margin: 0px;
+  height: 100vh;
 }
 
 /* Typewriter animation code inspired by https://css-tricks.com/snippets/css/typewriter-effect/ */
@@ -48,7 +50,9 @@ h5 {
 
 .game-container {
   flex-direction: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  height: 100%;
+
   display: none;
 }
 
@@ -210,7 +214,8 @@ input[type="text"]:focus {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  height: 100%;
 }
 
 .begin-button {
@@ -235,10 +240,11 @@ input[type="text"]:focus {
   display: none;
   flex-direction: row;
   flex-wrap: wrap;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   justify-content: space-around;
   align-items: center;
   font-size: 30px;
+  height: 100%;
 }
 
 .choose {
@@ -444,5 +450,25 @@ img:hover {
   100% {
     color: white;
     transform: translateX(0px);
+  }
+}
+
+.flash {
+  animation: flash 2s ease-in-out infinite;
+}
+
+@keyframes flash {
+  0% {
+    font-size: 18px;
+    /* background-color: transparent;
+    /* color: white; */
+  }
+  50% {
+    /* background-color: rgb(43, 181, 43); */
+    font-size: 25px;
+    /* color: black; */
+  }
+  100% {
+    font-size: 18px;
   }
 }

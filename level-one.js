@@ -144,6 +144,7 @@ levelOneButton.addEventListener("click", function() {
   setDisplay(gameContainer, "flex");
   setDisplay(playOne, "inline-block");
   setDisplay(playTwo, "none");
+  playOne.classList.add("flash");
 });
 
 levelTwoButton.addEventListener("click", function() {
@@ -152,6 +153,7 @@ levelTwoButton.addEventListener("click", function() {
   setDisplay(gameContainer, "flex");
   setDisplay(playOne, "none");
   setDisplay(playTwo, "inline-block");
+  playTwo.classList.add("flash");
 });
 
 changeLevelButton.addEventListener("click", function() {
@@ -160,6 +162,12 @@ changeLevelButton.addEventListener("click", function() {
   setDisplay(loseMessage, "none");
   setDisplay(gameContainer, "none");
   setDisplay(levelPage, "flex");
+  if (playOne.classList.contains("flash")) {
+    playOne.classList.remove("flash");
+  }
+  if (playTwo.classList.contains("flash")) {
+    playTwo.classList.remove("flash");
+  }
   clearInterval(multipleWords);
   resetMisses();
   resetScore();
@@ -358,11 +366,13 @@ const levelTwo = function() {
 };
 
 playOne.addEventListener("click", function() {
+  playOne.classList.remove("flash");
   textBox.select();
   levelOne();
 });
 
 playTwo.addEventListener("click", function() {
+  playTwo.classList.remove("flash");
   textBox.select();
   levelTwo();
 });
